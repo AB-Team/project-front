@@ -1,9 +1,9 @@
-export class registration{
+export class Registration{
 
   public emailId: string;
   public password: string;
 
-  constructor(emailId, password){
+  constructor(emailId: string, password: string){
     this.emailId = emailId;
     this.password = password;
   }

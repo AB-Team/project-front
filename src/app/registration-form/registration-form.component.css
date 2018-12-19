@@ -1,0 +1,30 @@
+.registration-header{
+  color: grey;
+  font-family: 'Open Sans', cursive;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 35px;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+.text-grey{
+  color: grey;
+  font-family: 'Open Sans', cursive;
+}
+
+.registration-box{
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: grey;
+}
+
+/* .ng-valid[required], .ng-valid.required  {
+  border-bottom: 2px solid #42A948;
+}
+
+.ng-invalid:not(form)  {
+  border-bottom: 2px solid #a94442;
+} */
