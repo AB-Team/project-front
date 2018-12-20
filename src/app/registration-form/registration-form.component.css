@@ -17,6 +17,13 @@
 
 }
 
+.login-link{
+  display: block;
+  margin-bottom: auto;
+  font-size: 13px;
+  text-decoration: none;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: grey;
 }
