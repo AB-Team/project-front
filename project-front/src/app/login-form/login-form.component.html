@@ -1,5 +1,5 @@
-<div class="container registration-box">
-  <div class="registration-header">Create your account</div>
+<div class="container login-box">
+  <div class="login-header">Login</div>
   <form class="text-grey">
     <div class="form-group">
       <label for="emailId">Email</label>
@@ -13,9 +13,9 @@
       <input type="password" [(ngModel)]="form_model.password" name="password" class="form-control" id="password" required>
     </div>
 
-    <a class="login-link" href="#">Already a member?</a><br>
+    <a class="registration-link" routerLink="registration">not a member?</a><br>
 
-    <button type="submit" (click)="onSubmit()" class="btn btn-success">Register</button>
+    <button type="submit" (click)="onSubmit()" class="btn btn-success">Login</button>
 
   </form>
 </div>

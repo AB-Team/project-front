@@ -6,6 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {path: '', component: LoginFormComponent},
+  {path: 'registration', component: RegistrationFormComponent}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +21,8 @@ import { RegistrationFormComponent } from './registration-form/registration-form
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
