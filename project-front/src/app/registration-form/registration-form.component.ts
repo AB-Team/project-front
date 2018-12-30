@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Registration } from './registration';
+import { UserFormInput } from '../models/userFormInput';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'registration-form',
@@ -8,15 +9,25 @@ import { Registration } from './registration';
 })
 export class RegistrationFormComponent implements OnInit {
 
-  form_model = new Registration("", "");
+  registerData = new UserFormInput();
 
-  constructor() { }
+  registrationForm: FormGroup;
+
+  constructor() {
+    this.registrationForm = new FormGroup({
+      'emailId': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, [Validators.required])
+    });
+  }
 
   ngOnInit() {
   }
 
   onSubmit(){
-    console.log(this.form_model);
+    this.registerData.setEmailId(this.registrationForm.value.emailId);
+    this.registerData.setPassword(this.registrationForm.value.password);
+
+    this.registrationForm.reset();
   }
 
 }
