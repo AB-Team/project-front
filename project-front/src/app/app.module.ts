@@ -10,10 +10,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './service/auth.service';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponentComponent } from './home/header-component/header-component.component';
+
 const routes: Routes = [
-  {path: '', component: LoginFormComponent},
+  {path: 'login', component: LoginFormComponent},
   {path: 'registration', component: RegistrationFormComponent},
-  {path: 'home', component: HomeComponent}
+  {path: '', component: HomeComponent}
 ];
 
 @NgModule({
@@ -21,12 +24,14 @@ const routes: Routes = [
     AppComponent,
     LoginFormComponent,
     RegistrationFormComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [AuthService],

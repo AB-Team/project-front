@@ -1,23 +1,44 @@
 import { OnInit } from '@angular/core';
+import { Role } from './role';
 
 export class User implements OnInit{
 
-  private name: string;
-  private emailId: string;
+  private id: number;
+  private username: string;
+  private email: string;
   private password: string;
+  private roles: Role[];
   private isAuthenticated: boolean;
 
-  constructor(name: string, emailId: string, password: string, isAuthenticated: boolean){
-    this.name = name;
-    this.emailId = emailId;
+  constructor(id: number , username: string, email: string, password: string, roles: Role[], isAuthenticated: boolean){
+    this.id = id;
+    this.username = username;
+    this.email = email;
     this.password = password;
+    this.roles = roles;
     this.isAuthenticated = isAuthenticated;
   }
 
   ngOnInit(){}
 
-  setEmailId(emailId: string){
-    this.emailId = emailId;
+  setId(id: number){
+    this.id = id;
+  }
+
+  getId(){
+    return this.id;
+  }
+
+  setRoles(roles: Role[]){
+    this.roles = roles;
+  }
+
+  getRole(){
+    return this.roles;
+  }
+
+  setEmailId(email: string){
+    this.email = email;
   }
 
   setPassword(password: string){
@@ -25,23 +46,23 @@ export class User implements OnInit{
   }
 
   getEmailId(){
-    return this.emailId;
+    return this.email;
   }
 
   getPassword(){
     return this.password;
   }
 
-  setName(name: string){
-    this.name = name;
+  setUsername(username: string){
+    this.username = username;
   }
 
   setIsAuthenticated(isAuthenticated: boolean){
     this.isAuthenticated = isAuthenticated;
   }
 
-  getName(){
-    return this.name;
+  getUsername(){
+    return this.username;
   }
 
   getIsAuthenticated(){

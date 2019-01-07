@@ -1,20 +1,20 @@
 export class UserFormInput{
 
-  private emailId: string;
+  private email: string;
   private password: string;
 
   constructor(){}
 
-  setEmailId(emailId: string){
-    this.emailId = emailId;
+  setEmail(email: string){
+    this.email = email;
   }
 
   setPassword(password: string){
     this.password = password;
   }
 
-  getEmailId(){
-    return this.emailId;
+  getEmail(){
+    return this.email;
   }
 
   getPassword(){

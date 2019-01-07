@@ -15,7 +15,7 @@ export class RegistrationFormComponent implements OnInit {
 
   constructor() {
     this.registrationForm = new FormGroup({
-      'emailId': new FormControl(null, [Validators.required, Validators.email]),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required])
     });
   }
@@ -24,7 +24,7 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.registerData.setEmailId(this.registrationForm.value.emailId);
+    this.registerData.setEmail(this.registrationForm.value.email);
     this.registerData.setPassword(this.registrationForm.value.password);
 
     this.registrationForm.reset();
