@@ -12,6 +12,7 @@ import { AuthService } from './service/auth.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponentComponent } from './home/header-component/header-component.component';
+import { BodyComponent } from './home/body/body.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginFormComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
     LoginFormComponent,
     RegistrationFormComponent,
     HomeComponent,
-    HeaderComponentComponent
+    HeaderComponentComponent,
+    BodyComponent
   ],
   imports: [
     BrowserModule,
