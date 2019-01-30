@@ -13,6 +13,7 @@ import { AuthService } from './service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponentComponent } from './home/header-component/header-component.component';
 import { BodyComponent } from './home/body/body.component';
+import { VideoframeComponent } from './home/body/videoframe/videoframe.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginFormComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
     RegistrationFormComponent,
     HomeComponent,
     HeaderComponentComponent,
-    BodyComponent
+    BodyComponent,
+    VideoframeComponent
   ],
   imports: [
     BrowserModule,
