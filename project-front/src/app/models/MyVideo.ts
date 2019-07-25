@@ -1,9 +1,6 @@
-import { OnInit } from '@angular/core';
 import { Community } from './Community';
 
-export class MyVideo implements OnInit{
-
-  ngOnInit(){}
+export class MyVideo{
 
   constructor(id : string, title : string, author : string, description : string
     , community : Community, published : string, updated : string

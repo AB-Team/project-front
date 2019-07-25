@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MyVideo } from 'src/app/models/MyVideo';
 import { Router } from '@angular/router';
+import { MyVideo } from 'src/app/models/MyVideo';
 
 @Component({
-  selector: 'videoframe',
-  templateUrl: './videoframe.component.html',
-  styleUrls: ['./videoframe.component.css']
+  selector: 'mainVideoFrame',
+  templateUrl: './main-video-frame.component.html',
+  styleUrls: ['./main-video-frame.component.css']
 })
-export class VideoframeComponent implements OnInit {
+export class MainVideoFrameComponent implements OnInit {
 
   @Input() myVideo: MyVideo;
   url;
@@ -27,7 +27,7 @@ export class VideoframeComponent implements OnInit {
   }
 
   onClick(){
-    console.log('title on click: ' + this.title);
     this.router.navigate(['/videoplayback'], {queryParams: {'url': this.url, 'title': this.title}});
   }
+
 }

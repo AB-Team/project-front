@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header-component.component.html',
-  styleUrls: ['./header-component.component.css']
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponentComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   private showNavbar: boolean = false;
 

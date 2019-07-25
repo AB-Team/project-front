@@ -1,35 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title, Meta } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { RegistrationFormComponent } from './registration-form/registration-form.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AuthService } from './service/auth.service';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponentComponent } from './home/header-component/header-component.component';
 import { BodyComponent } from './home/body/body.component';
 import { VideoframeComponent } from './home/body/videoframe/videoframe.component';
+import { HeaderComponent } from './home/header/header.component';
+import { VideoplaybackComponent } from './home/videoplayback/videoplayback.component';
+import { MainVideoFrameComponent } from './home/body/main-video-frame/main-video-frame.component';
+import { ArticleheadlineComponent } from './home/body/articleheadline/articleheadline.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginFormComponent},
-  {path: 'registration', component: RegistrationFormComponent},
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'videoplayback', component: VideoplaybackComponent},
+  {path: '404', component: HomeComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
-    RegistrationFormComponent,
     HomeComponent,
-    HeaderComponentComponent,
+    HeaderComponent,
     BodyComponent,
-    VideoframeComponent
+    VideoframeComponent,
+    VideoplaybackComponent,
+    MainVideoFrameComponent,
+    ArticleheadlineComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService],
+  providers: [Title, Meta],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,8 @@
 
 # compiled output
 /dist
+/brotlied
+/gzipped
 /tmp
 /out-tsc
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponentComponent } from './header-component.component';
+import { MainVideoFrameComponent } from './main-video-frame.component';
 
-describe('HeaderComponentComponent', () => {
-  let component: HeaderComponentComponent;
-  let fixture: ComponentFixture<HeaderComponentComponent>;
+describe('MainVideoFrameComponent', () => {
+  let component: MainVideoFrameComponent;
+  let fixture: ComponentFixture<MainVideoFrameComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponentComponent ]
+      declarations: [ MainVideoFrameComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponentComponent);
+    fixture = TestBed.createComponent(MainVideoFrameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

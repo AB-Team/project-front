@@ -1,0 +1,16 @@
+<div>
+  <div class="row" (click)='onClick()'>
+    <img class="mainVideoFrame" [src]="thumbnail" [alt]="title" />
+  </div>
+  <div class="row" (click)='onClick()'>
+    <h5 class="mainVideoFrameTitle">{{title}}</h5>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-6">
+      <h4 class="mainVideoFrameAuthor">{{author}}</h4>
+    </div>
+    <div class="col-md-6 col-xs-6">
+      <div class="mainVideoFrameViews">{{views}} views</div>
+    </div>
+  </div>
+</div>

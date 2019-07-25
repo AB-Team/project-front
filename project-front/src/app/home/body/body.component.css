@@ -2,3 +2,20 @@
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
+
+.bodyContent{
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: white;
+}
+
+.sectionTitle{
+  padding-left: 6%;
+  padding-top: 1%;
+  background-color: white;
+}
+
+.marginClass{
+  background-color: white;
+  height: 25px;
+}

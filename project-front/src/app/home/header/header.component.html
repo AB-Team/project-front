@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
+<nav class="navbar navbar-expand-lg siteHeader">
+  <h1 class="navbar-brand" [routerLink]="['']">
     Half Space
-  </a>
+  </h1>
   <button class="navbar-toggler" (click)="toggleNavbar()" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" [ngClass]="{ 'show': showNavbar }">
+  <!-- <div class="collapse navbar-collapse" [ngClass]="{ 'show': showNavbar }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="#">Bundesliga</a>
@@ -17,5 +17,5 @@
         <a class="nav-link" href="#">Ligue 1</a>
       </li>
     </ul>
-  </div>
+  </div> -->
 </nav>

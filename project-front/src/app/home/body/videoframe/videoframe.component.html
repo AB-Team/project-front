@@ -1,15 +1,14 @@
-<div class="row">
-    <!-- <iframe class="videoFrame" [src]="url" frameborder="0" allow="encrypted-media" allowfullscreen></iframe> -->
-    <img class="videoFrame" [src]="thumbnail" /> 
+<div class="row" (click)='onClick()'>
+    <img class="videoFrame" [src]="thumbnail" [alt]="title" />
+</div>
+<div class="row" (click)='onClick()'>
+  <h5 class="title">{{title}}</h5>
 </div>
 <div class="row">
-  <div class="title">{{title}}</div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <div class="author">{{author}}</div>
+  <div class="col-md-6 col-xs-6">
+    <h4 class="author">{{author}}</h4>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 col-xs-6">
     <div class="views">{{views}} views</div>
   </div>
 </div>

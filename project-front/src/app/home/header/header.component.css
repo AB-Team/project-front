@@ -1,0 +1,12 @@
+.navbar-brand{
+  font-size: 2rem;
+  color: #5a5757;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 5%;
+  cursor: pointer;
+}
+
+.siteHeader{
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+  background-color: white;
+}
