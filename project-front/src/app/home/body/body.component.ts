@@ -33,16 +33,10 @@ export class BodyComponent implements OnInit {
 
   ngOnInit() {
     // prod
-    let getVideos = this.http.get('http://34.74.56.246/youtubedata/video/api/all',
+    let getVideos = this.http.get('http://34.74.56.246/v1/video/all',
                     { responseType: 'json'});
 
-    let getArticles = this.http.get('http://34.74.56.246/articlemapper/v1/article/all', {responseType: 'json'});
-
-    // dev
-    // let getVideos = this.http.get('http://localhost:8080/video/api/all',
-    //                 { responseType: 'json'});
-    //
-    // let getArticles = this.http.get('http://localhost:9000/v1/article/all', {responseType: 'json'});
+    let getArticles = this.http.get('http://34.74.56.246/v1/article/all', {responseType: 'json'});
 
     getVideos.subscribe((response: MyVideo[]) => {
         response.forEach((video) => {
