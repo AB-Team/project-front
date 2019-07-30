@@ -33,10 +33,10 @@ export class BodyComponent implements OnInit {
 
   ngOnInit() {
     // prod
-    let getVideos = this.http.get('http://34.74.56.246/v1/video/all',
+    let getVideos = this.http.get('http://34.74.56.246/services/v1/video/all',
                     { responseType: 'json'});
 
-    let getArticles = this.http.get('http://34.74.56.246/v1/article/all', {responseType: 'json'});
+    let getArticles = this.http.get('http://34.74.56.246/services/v1/article/all', {responseType: 'json'});
 
     getVideos.subscribe((response: MyVideo[]) => {
         response.forEach((video) => {
