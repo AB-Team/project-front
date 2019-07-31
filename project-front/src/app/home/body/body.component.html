@@ -2,7 +2,7 @@
   <div class="row bodyContent">
     <div class="row" style="background-color: white; margin-bottom: 20px;">
       <div class="col-md-6">
-        <mainVideoFrame *ngIf="mainVideo != undefined" [myVideo]="mainVideo" style="padding: 2%;"></mainVideoFrame>
+        <mainVideoFrame *ngFor="let video of mainVideo" [myVideo]="video" style="padding: 2%;"></mainVideoFrame>
       </div>
       <div class="col-md-6">
         <div class="row">
@@ -11,21 +11,25 @@
       </div>
     </div>
     <div class="row">
-      <videoframe class="col-md-3 col-xs-12" *ngFor="let video of myVideos | slice:0:4" [myVideo]="video"></videoframe>
+      <videoframe class="col-md-3 col-xs-12" *ngFor="let video of middleVideos" [myVideo]="video"></videoframe>
     </div>
   </div>
   <div class="marginClass"></div>
-  <div class="sectionTitle">
-      <h3 style="font-family: 'Catamaran', sans-serif; border-bottom: 1px solid rgba(0,0,0,.0975);">News</h3>
-  </div>
-  <div class="row bodyContent">
-    <articleheadline class="col-md-6 col-xs-12" *ngFor="let article of myArticles; let i = index" [myArticle]="article"></articleheadline>
+  <div *ngIf="articles$ | async as articles">
+    <div class="sectionTitle">
+        <h3 style="font-family: 'Catamaran', sans-serif; border-bottom: 1px solid rgba(0,0,0,.0975);">News</h3>
+    </div>
+    <div class="row bodyContent">
+      <articleheadline class="col-md-6 col-xs-12" *ngFor="let article of articles" [myArticle]="article"></articleheadline>
+    </div>
   </div>
   <div class="marginClass"></div>
-  <div class="sectionTitle">
-      <h3 style="font-family: 'Catamaran', sans-serif; border-bottom: 1px solid rgba(0,0,0,.0975);">Videos</h3>
-  </div>
-  <div class="row bodyContent" style="margin-bottom: 2%;">
-    <videoframe class="col-md-3 col-xs-12" *ngFor="let video of myVideos | slice:4" [myVideo]="video"></videoframe>
+  <div *ngIf="videos$ | async as videos">
+    <div class="sectionTitle">
+        <h3 style="font-family: 'Catamaran', sans-serif; border-bottom: 1px solid rgba(0,0,0,.0975);">Videos</h3>
+    </div>
+    <div class="row bodyContent" style="margin-bottom: 2%;">
+      <videoframe class="col-md-3 col-xs-12" *ngFor="let video of videos" [myVideo]="video"></videoframe>
+    </div>
   </div>
 </div>

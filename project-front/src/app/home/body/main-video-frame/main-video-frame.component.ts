@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MyVideo } from 'src/app/models/MyVideo';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'mainVideoFrame',
@@ -16,14 +17,15 @@ export class MainVideoFrameComponent implements OnInit {
   author: string;
   thumbnail: string;
 
-  constructor(private router: Router) {}
+  constructor(private _sanitizer: DomSanitizer, private router: Router) {}
 
   ngOnInit() {
-    this.url = this.myVideo.getUrl();
-    this.title = this.myVideo.getTitle();
-    this.author = this.myVideo.getAuthor();
-    this.views = this.myVideo.getCommunity().getStatistics().getViews();
-    this.thumbnail = this.myVideo.getThumbnail();
+    this.url = this._sanitizer.bypassSecurityTrustResourceUrl(
+      "https://www.youtube.com/embed/"+this.myVideo.id);
+    this.title = this.myVideo.title;
+    this.author = this.myVideo.author;
+    this.views = this.myVideo.community['statistics']['views'];
+    this.thumbnail = this.myVideo.thumbnail;
   }
 
   onClick(){

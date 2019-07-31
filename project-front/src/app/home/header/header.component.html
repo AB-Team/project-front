@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg siteHeader">
-  <h1 class="navbar-brand" [routerLink]="['']">
+  <h1 class="navbar-brand" (click)='onClick()'>
     Half Space
   </h1>
-  <button class="navbar-toggler" (click)="toggleNavbar()" type="button">
+  <!-- <button class="navbar-toggler" (click)="toggleNavbar()" type="button">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </button> -->
   <!-- <div class="collapse navbar-collapse" [ngClass]="{ 'show': showNavbar }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, Title, Meta } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { MyVideo } from 'src/app/models/MyVideo';
-import { Statistics } from 'src/app/models/Statistics';
-import { StarRating } from 'src/app/models/StarRating';
-import { Community } from 'src/app/models/Community';
 import { MyArticle } from 'src/app/models/MyArticle';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-body',
@@ -14,13 +13,14 @@ import { MyArticle } from 'src/app/models/MyArticle';
 })
 export class BodyComponent implements OnInit {
 
-  public myVideos:MyVideo[] = [];
-  public myArticles:MyArticle[] = [];
-  public mainVideo:MyVideo;
-  public sideVideos:MyVideo[] = [];
+  articles$: Observable<MyArticle[]>;
+  mainVideo: MyVideo[];
+  sideVideos: MyVideo[];
+  middleVideos: MyVideo[];
+  videos$: Observable<MyVideo[]>;
 
-  constructor(private _sanitizer: DomSanitizer, private http: HttpClient,
-    private titleService: Title, private meta: Meta) {
+  constructor(private httpClient: HttpClient, private titleService: Title,
+    private meta: Meta) {
 
       this.setTitle("Football Highlights, videos, Transfers, News, Analysis, Community | Half Space");
       this.meta.updateTag({name: "description", content: "Halfspace - latest football news, transfers, videos, highlights, analysis from around the world of football."});
@@ -33,60 +33,30 @@ export class BodyComponent implements OnInit {
 
   ngOnInit() {
     // prod
-    let getVideos = this.http.get('http://34.74.56.246/services/v1/video/all',
-                    { responseType: 'json'});
+    this.videos$ = this.httpClient.get<MyVideo[]>('http://34.74.56.246/services/v1/video/all',
+                    { responseType: 'json'}).pipe(map((myvideos) => {
+                      this.mainVideo = myvideos.splice(0, 1);
+                      this.sideVideos = myvideos.splice(0, 4);
+                      this.middleVideos = myvideos.splice(0, 4);
+                      return myvideos;
+                    }));
 
-    let getArticles = this.http.get('http://34.74.56.246/services/v1/article/all', {responseType: 'json'});
+    this.articles$ = this.httpClient.get<MyArticle[]>('http://34.74.56.246/services/v1/article/all',
+                    {responseType: 'json'}).pipe(map((articles) => {
+                      articles.forEach((article) => {
+                        let description = '<p>' + article.description;
 
-    getVideos.subscribe((response: MyVideo[]) => {
-        response.forEach((video) => {
-          const stats = video['community']['statistics'];
-          const statistics = new Statistics(stats['views']);
+                        description = description.replace(/&lt;/g,' <');
+                        description = description.replace(/&gt;/g,'> ');
+                        description = description.replace(/&quot;/g, '\"');
 
-          const starRating = video['community']['starRating'];
-          const starRatingObject = new StarRating(starRating['count'], starRating['average'],
-                              starRating['min'], starRating['max']);
+                        description = description + '... <a target="_blank" href="'
+                              + article.url +'" >more</a></p>';
 
-          const community = new Community(starRatingObject, statistics);
+                        article.description = description;
+                      })
 
-          const myVideo = new MyVideo(video['id'], video['title'], video['author']
-                        , video['description'], community, video['published']
-                        , video['updated'], this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/"+video['id'])
-                        , video['thumbnail']);
-
-          this.myVideos.push(myVideo);
-        });
-    }, (error) => {
-      console.log(error);
-    }, () => {
-      this.mainVideo = this.myVideos.shift();
-      this.sideVideos = this.myVideos.splice(0, 4)
-    });
-
-    getArticles.subscribe((response: MyArticle[]) => {
-
-      response.forEach((article) => {
-
-        let description = '<p>' + article.description;
-
-        description = description.replace(/&lt;/g,' <');
-        description = description.replace(/&gt;/g,'> ');
-        description = description.replace(/&quot;/g, '\"');
-
-        description = description + '... <a target="_blank" href="'
-              + article.url +'" >more</a></p>';
-
-        const myArticle = new MyArticle(article.headline, article.source,
-          this._sanitizer.bypassSecurityTrustResourceUrl(article.url),
-          description, this._sanitizer.bypassSecurityTrustResourceUrl(
-            article.imageUrl), article.time);
-
-          this.myArticles.push(myArticle);
-      });
-
-    }, (error) => {
-      console.log(error);
-    }, () => {
-    });
+                      return articles;
+                    }));
   }
 }
