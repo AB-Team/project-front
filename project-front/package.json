@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "gzipped": "ng build --prod --base-href 'http://halfspace.co/' && gzipper ../docs/ ./gzipped",
-    "brotlied": "ng build --prod && gzipper --brotli ./dist/project-front ./brotlied"
+    "gzipped": "ng build --prod --base-href http://halfspace.co/ && gzipper ../docs/ ./gzipped",
+    "brotlied": "ng build --prod --base-href http://halfspace.co/ && gzipper --brotli ../docs/ ./brotlied"
   },
   "private": true,
   "dependencies": {
