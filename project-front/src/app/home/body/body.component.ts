@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class BodyComponent implements OnInit {
 
+  dataAvailable: boolean = true;
   articles$: Observable<MyArticle[]>;
   mainVideo: MyVideo[];
   sideVideos: MyVideo[];
@@ -38,6 +39,8 @@ export class BodyComponent implements OnInit {
                       this.mainVideo = myvideos.splice(0, 1);
                       this.sideVideos = myvideos.splice(0, 4);
                       this.middleVideos = myvideos.splice(0, 4);
+                      this.dataAvailable = false;
+
                       return myvideos;
                     }));
 

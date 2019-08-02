@@ -19,3 +19,17 @@
   background-color: white;
   height: 25px;
 }
+
+#loading-div{
+  position: absolute;
+  left: 45%;
+  top: 40%;
+}
+
+@media (max-width: 800px) {
+  #loading-div{
+    position: absolute;
+    left: 42%;
+    top: 40%;
+  }
+}
