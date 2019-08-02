@@ -14,6 +14,7 @@ import { HeaderComponent } from './home/header/header.component';
 import { VideoplaybackComponent } from './home/videoplayback/videoplayback.component';
 import { MainVideoFrameComponent } from './home/body/main-video-frame/main-video-frame.component';
 import { ArticleheadlineComponent } from './home/body/articleheadline/articleheadline.component';
+import { VideoInfoService } from './service/VideoInfoService';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -40,7 +41,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [Title, Meta],
+  providers: [Title, Meta, VideoInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
