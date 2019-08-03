@@ -26,10 +26,10 @@
   top: 40%;
 }
 
-@media (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   #loading-div{
     position: absolute;
-    left: 42%;
+    left: 40%;
     top: 40%;
   }
 }
