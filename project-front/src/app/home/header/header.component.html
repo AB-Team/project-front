@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg siteHeader">
-  <h1 class="navbar-brand" (click)='onClick()'>
+<nav class="navbar navbar-expand-lg" [ngClass]="getSiteHeader()">
+  <h1 [ngClass]="getNavBarBrand()" (click)='onClick()'>
     Half Space
   </h1>
   <!-- <button class="navbar-toggler" (click)="toggleNavbar()" type="button">

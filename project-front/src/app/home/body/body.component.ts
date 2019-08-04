@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class BodyComponent implements OnInit {
 
+  shrinkHeader: boolean = false;
   dataAvailable: boolean = true;
   articles$: Observable<MyArticle[]>;
   mainVideo: MyVideo[];
@@ -62,4 +63,5 @@ export class BodyComponent implements OnInit {
                       return articles;
                     }));
   }
+
 }

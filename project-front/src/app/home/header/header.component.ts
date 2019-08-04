@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   private showNavbar: boolean = false;
+  shrinkHeader: boolean = false;
 
   constructor(private router: Router) { }
 
@@ -23,4 +24,19 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  getSiteHeader(){
+    return this.shrinkHeader ? 'siteHeaderShrinked' : 'siteHeader';
+  }
+
+  getNavBarBrand(){
+    return this.shrinkHeader ? 'navbar-brandShrinked' : 'navbar-brand';
+  }
+
+  @HostListener("window:scroll", [])
+  onScrollAdjustHeader(){
+    if(window.pageYOffset > 240)
+      this.shrinkHeader = true;
+    else
+      this.shrinkHeader = false;
+  }
 }
