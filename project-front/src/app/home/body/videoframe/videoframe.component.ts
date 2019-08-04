@@ -27,6 +27,7 @@ export class VideoframeComponent implements OnInit {
 
   onClick(){
     this.videoInfoService.title = this.title;
+    this.videoInfoService.isHomePage = false;
     this.router.navigate(['/videoplayback'], {queryParams: {'id': this.myVideo.id}});
   }
 }

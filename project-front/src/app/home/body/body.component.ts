@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { MyVideo } from 'src/app/models/MyVideo';
 import { MyArticle } from 'src/app/models/MyArticle';
 import { Observable } from 'rxjs';
+import { VideoInfoService } from 'src/app/service/VideoInfoService';
 
 @Component({
   selector: 'app-body',
@@ -22,7 +23,7 @@ export class BodyComponent implements OnInit {
   videos$: Observable<MyVideo[]>;
 
   constructor(private httpClient: HttpClient, private titleService: Title,
-    private meta: Meta) {
+    private meta: Meta, private videoInfoService: VideoInfoService) {
 
       this.setTitle("Football Highlights, videos, Transfers, News, Analysis, Community | Half Space");
       this.meta.updateTag({name: "description", content: "Halfspace - latest football news, transfers, videos, highlights, analysis from around the world of football."});
@@ -34,6 +35,9 @@ export class BodyComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.videoInfoService.isHomePage = true;
+
     // prod
     this.videos$ = this.httpClient.get<MyVideo[]>('http://34.74.56.246/services/v1/video/all',
                     { responseType: 'json'}).pipe(map((myvideos) => {

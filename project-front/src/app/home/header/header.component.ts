@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { VideoInfoService } from 'src/app/service/VideoInfoService';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   private showNavbar: boolean = false;
   shrinkHeader: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private videoInfoService: VideoInfoService) { }
 
   ngOnInit() {
   }
@@ -25,15 +26,16 @@ export class HeaderComponent implements OnInit {
   }
 
   getSiteHeader(){
-    return this.shrinkHeader ? 'siteHeaderShrinked' : 'siteHeader';
+    return this.shrinkHeader || !this.videoInfoService.isHomePage ? 'siteHeaderShrinked' : 'siteHeader';
   }
 
   getNavBarBrand(){
-    return this.shrinkHeader ? 'navbar-brandShrinked' : 'navbar-brand';
+    return this.shrinkHeader || !this.videoInfoService.isHomePage ? 'navbar-brandShrinked' : 'navbar-brand';
   }
 
   @HostListener("window:scroll", [])
   onScrollAdjustHeader(){
+    console.log(this.videoInfoService);
     if(window.pageYOffset > 240)
       this.shrinkHeader = true;
     else
