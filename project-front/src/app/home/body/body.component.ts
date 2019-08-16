@@ -39,7 +39,7 @@ export class BodyComponent implements OnInit {
     this.videoInfoService.isHomePage = true;
 
     // prod
-    this.videos$ = this.httpClient.get<MyVideo[]>('http://34.74.56.246/services/v1/video/all',
+    this.videos$ = this.httpClient.get<MyVideo[]>('https://34.74.56.246/services/v1/video/all',
                     { responseType: 'json'}).pipe(map((myvideos) => {
                       this.mainVideo = myvideos.splice(0, 1);
                       this.sideVideos = myvideos.splice(0, 4);
@@ -49,7 +49,7 @@ export class BodyComponent implements OnInit {
                       return myvideos;
                     }));
 
-    this.articles$ = this.httpClient.get<MyArticle[]>('http://34.74.56.246/services/v1/article/all',
+    this.articles$ = this.httpClient.get<MyArticle[]>('https://34.74.56.246/services/v1/article/all',
                     {responseType: 'json'}).pipe(map((articles) => {
                       articles.forEach((article) => {
                         let description = '<p>' + article.description;
